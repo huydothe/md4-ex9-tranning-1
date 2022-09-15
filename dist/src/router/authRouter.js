@@ -11,6 +11,10 @@ const upload = (0, multer_1.default)();
 router.get('/login', (req, res) => {
     res.render('login');
 });
+router.get('/login/google', passport_1.default.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/google/callback', passport_1.default.authenticate('google'), (req, res, next) => {
+    res.send("You are authenticated");
+});
 router.post('/login', upload.none(), (req, res, next) => {
     console.log(req.body);
     passport_1.default.authenticate('local', (err, user) => {

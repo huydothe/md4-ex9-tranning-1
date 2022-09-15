@@ -4,7 +4,12 @@ exports.UserModel = void 0;
 const mongoose_1 = require("mongoose");
 const userSchema = new mongoose_1.Schema({
     username: String,
-    password: String
+    password: String,
+    google: {
+        id: {
+            type: String
+        }
+    }
 });
 const UserModel = (0, mongoose_1.model)('user', userSchema);
 exports.UserModel = UserModel;
